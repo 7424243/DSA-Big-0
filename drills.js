@@ -62,3 +62,118 @@ function naiveSearch(array, item) {
 */
 
 //Answer: Linear time O(n) - depends on the number of elements in the array
+
+/* ======= 6. Creating pairs =======
+What is the Big O of the following algorithm? Explain your answer.
+function createPairs(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        for(let j = i + 1; j < arr.length; j++) {
+            console.log(arr[i] + ", " +  arr[j] );
+        }
+    }
+}
+*/
+
+//Answer: Polynomial time O(n^k) - nested loops 
+
+/* ======== 7. Compute the sequence ========
+What does the following algorithm do? What is its runtime complexity? Explain your answer.
+function compute(num) {
+    let result = [];
+    for (let i = 1; i <= num; i++) {
+
+        if (i === 1) {
+            result.push(0);
+        }
+        else if (i === 2) {
+            result.push(1);
+        }
+        else {
+            result.push(result[i - 2] + result[i - 3]);
+        }
+    }
+    return result;
+}
+*/
+
+//Answer: This algorithm creates the Fibionacci sequence up the the num provided. The first iteration, pushes 0 into results array, the second iteration pushes 1 into the results array, and then the remaining iterations complete the fibionacci sequence until num is reached.
+//Linear time O(n) - time complexity grows in relationship directly to the num input.
+
+/* ======= 8. An efficient search ========
+In this example, we return to the problem of searching using a more sophisticated approach than in naive search, above. Assume that the input array is always sorted. What is the Big O of the following algorithm? Explain your answer.
+function efficientSearch(array, item) {
+    let minIndex = 0;
+    let maxIndex = array.length - 1;
+    let currentIndex;
+    let currentElement;
+
+    while (minIndex <= maxIndex) {
+        currentIndex = Math.floor((minIndex + maxIndex) / 2);
+        currentElement = array[currentIndex];
+
+        if (currentElement < item) {
+            minIndex = currentIndex + 1;
+        }
+        else if (currentElement > item) {
+            maxIndex = currentIndex - 1;
+        }
+        else {
+            return currentIndex;
+        }
+    }
+    return -1;
+}
+*/
+
+//Answer: Logarithmic time O(log(n)) - each time through the while loop, the problem gets smaller which SLOWLY increases time complexity.
+
+/* ======== 9. Random element =======
+What is the Big O of the following algorithm? Explain your answer.
+function findRandomElement(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+*/
+
+//Answer: Constant time O(1) - it returns a random value of an array once.
+
+/* ======= 10. Who Am I? =======
+What does the following algorithm do? What is the Big O of the following algorithm? Explain your answer
+function isWhat(n) {
+    if (n < 2 || n % 1 !== 0) {
+        return false;
+    }
+    for (let i = 2; i < n; ++i) {
+        if (n % i === 0) return false;
+    }
+    return true;
+}
+*/
+
+//Answer: The algorithm checks if a number is a prime number. Linear time O(n) - time complexity grows proportionatly with size of n.
+
+/* ======= 11. Tower of Hanoi =======
+Derive an algorithm to solve the Tower of Hanoi puzzle.
+Implement your algorithm using recursion. Your program should display each movement of the disk from one rod to another.
+If you are given 5 disks, how do the rods look like after 7 recursive calls?
+How many moves are needed to complete the puzzle with 3 disks? with 4 disks? with 5 disks?
+What is the runtime of your algorithm?
+*/
+
+/* s, d, e represent three rods. n is the number of discs initially in s */
+
+const towerOfHanoi = function(s, d, e, n) {
+    if(n <= 0) {
+        return
+    }
+    towerOfHanoi(s, e, d, n - 1)
+    console.log(`Move Disk-${n} FROM ${s} TO ${d}`)
+    towerOfHanoi(e, d, s, n - 1)
+}
+
+//after 7 recursive calls with 5 disks...discs 1, 4, 5 are on rod s and disks 1, 2, 3 are on rod D.
+//31 moves needed to complete the puzzle with 5 disks. 15 moves needed to complete the puzzle with 4 disks. 7 moves needed to complete the puzzles with 3 disks.
+//Exponential time O(2^n) - run times grow rapidly with a small increase in input size.
+
+
+
+
