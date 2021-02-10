@@ -174,6 +174,118 @@ const towerOfHanoi = function(s, d, e, n) {
 //31 moves needed to complete the puzzle with 5 disks. 15 moves needed to complete the puzzle with 4 disks. 7 moves needed to complete the puzzles with 3 disks.
 //Exponential time O(2^n) - run times grow rapidly with a small increase in input size.
 
+/* ======== 12. Iterative Version / 13. Recursive Big O / 14. Iterative Big O ======== 
+12. Iterative version
+Solve the drills 1 - 7 from your previous checkpoint (Recursion) iteratively.
+13. Take your solutions from the recursive exercises that you completed in the previous checkpoint and identify the time complexities (big O) of each of them.
+14. Take your solutions from the iterative exercises today and identify the time complexities (big O) of each of them.
+*/
 
+//1. Counting Sheep
+function countingSheep(number) {
+    for (let i = number; i > 0; i--) {
+        console.log(`${i}: Another sheep jumps over the fence`) 
+    }
+    console.log(`All sheep jumped over the fence`) 
+}
+//Recursive Time Complexity: Linear time O(n) - run time is directly proportional to the size of number
+//Iterative Time Complexity: Linear time O(n) - run time is directly proportional to the size of number
 
+//2. Power Calculator
+function powerCalculator(baseInt, exponentInt) {
+    if(exponentInt === 0) {
+        return 1
+    }
+    if(exponentInt < 0) {
+        return 'Exponent should be >= 0'
+    }
+    let result = 1
+    for(let i = 0; i < exponentInt; i++) {
+        result = result * baseInt
+    }
+    return result
+}
+//Recursive Time Complexity: Linear time O(n) - run time is directly proportional to the size of number
+//Iterative Time Complexity: Linear time O(n) - run time is directly proportional to the size of number
 
+//3. Reverse String
+function reverseString(string) {
+    let newString = ''
+    for(let i = string.length-1; i >= 0; i--) {
+        newString = newString + string.charAt(i)
+    }
+    return newString
+}
+//Recursive Time Complexity: Linear time O(n) - run time is directly proportional to the length of string
+//Iterative Time Complexity: Linear time O(n) - run time is directly proportional to the length of string
+
+//4. nth Triangular Number
+function triangularNumber(number) {
+    let result = 0
+    for(let i = 1; i <= number; i++) {
+        result = result + i
+    }
+    return result
+}
+//Recursive Time Complexity: Linear time O(n) - run time is directly proportional to the number
+//Iterative Time Complexity: Linear time O(n) - run time is directly proportional to the number
+
+//5. String Splitter
+function stringSplitter(string, separator) {
+    let results = []
+    while(string.length > 0) {
+        let index = string.indexOf(separator)
+        if(index == -1) break
+        results.push(string.slice(0, index))
+        string = string.slice(index + separator.length)
+    }
+    results.push(string)
+    return results
+}
+//Recursive Time Complexity: Linear time O(n) - run time is directly proportional to the length of string
+//Iterative Time Complexity: Linear time O(n) - run time is directly proportional to the length of string
+
+//6. Fibonacci
+function fibonacci(num) {
+    let result = [];
+    for (let i = 1; i <= num; i++) {
+        if (i === 1) {
+            result.push(0);
+        }
+        else if (i === 2) {
+            result.push(1);
+        }
+        else {
+            result.push(result[i - 2] + result[i - 3]);
+        }
+    }
+    return result;
+}
+//Recursive Time Complexity: Linear time O(n) - run time is directly proportional to num
+//Iterative Time Complexity: Linear time O(n) - run time is directly proportional to num
+
+//7. Factorial
+function factorial(number) {
+    let results = 1
+    for(let i = number; i > 1; i--) {
+        results = results * i
+    }
+    return results
+}
+//Recursive Time Complexity: Linear time O(n) - run time is directly proportional to number
+//Iterative Time Complexity: Linear time O(n) - run time is directly proportional to number
+
+//8. A way out of the maze
+//Recursive Time Complexity: Linear time O(n) - run time is directly proportional to the size of the maze
+
+//9. All ways out of the maze
+//Recursive Time Complexity: Linear time O(n) - run time is directly proportional to the size of the maze
+
+//10. Anagrams
+//Recursive Time Complexity: Logarithmic time O(log(n)) - run time increases slowly the larger the string
+
+//11. Organization Chart
+//Recursive Time Complexity: Polynomial time O(n^k) - because of the nested situation, run time grows quicker than input
+
+//12. Binary Representation
+//Recursive Time Complexity: Exponential time O(2^n) - becaues run times grows much more rapidly than the input
